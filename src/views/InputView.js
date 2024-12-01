@@ -10,11 +10,11 @@ const readPipe = (promptMessage) => {
 }
 
 const InputView = {
-  async readDefault() {
+  async read() {
     return await readPipe(INPUT_MESSAGES.DEFAULT);
   },
 
-  async readExistParam(param) {
+  async readParam(param) {
     return await readPipe(INPUT_MESSAGES.CALLBACK(param));
   },
 }
