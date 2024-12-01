@@ -5,10 +5,6 @@ export const INPUT_MESSAGES = Object.freeze({
   CALLBACK: (param) => `\n${param}을 입력해 주세요.\n`,
 });
 
-export const OUTPUT_MESSAGES = Object.freeze({
-
-});
-
 export const ERROR_MESSAGES = deepFreeze({
   SOMETHING_1: {
     NUMBER: '[ERROR] ~~이 숫자가 아닙니다. 다시 입력해주세요.',
