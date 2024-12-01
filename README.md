@@ -248,6 +248,7 @@ npm run test
 npm run start
 
 git add .
+git add {filePath}
 git status
 git commit -m "feat/docs/fix/...: xxx"
 git push origin {branchName}
