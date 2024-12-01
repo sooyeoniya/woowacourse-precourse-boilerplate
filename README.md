@@ -172,8 +172,132 @@ npm run start
 
   - 중복되지 않는 n개의 Random 값 추출은 `Random.pickUniqueNumbersInRange()`를 활용한다.
 
-  - 현재 날짜와 시간을 가져오려면 `DateTimes`의 `now()`를 활용한다.
+  - 현재 날짜와 시간을 가져오려면 `DateTimes.now()`를 활용한다.
 
   - 사용자의 값을 입력 및 출력하려면 `Console.readLineAsync()`와 `Console.print()`를 활용한다.
 
   - 특정 숫자 배열의 순서를 임의로 섞으려면 `Random.shuffle(numArray)`를 활용한다.
+
+## 구현 시간 줄이는 나만의 Tip!
+
+- `constants.js` 파일은 만들지 말자. 테스트까지 구현 모두 끝나고 시간 남으면 상수화하기!
+
+- `JSDoc` 주석은 시간이 더 오래 걸리긴 하지만, 이걸 사용하면 타입 추론이 가능해서 다른 코드 짜기가 수월해서 오히려 구현 과정에서 헷갈리지 않고 빠르게 구현 가능하다. 하지만 코드 베이스 볼륨이 큰 경우엔 헷갈리는 부분에만 이를 적용하자. 그럼 테스트 코드 짤 때나 다른 파일에서 해당 변수나 함수를 불러올 때 수월하다.
+
+- 헷갈리는 로직이 있으면 주석을 달아둬도 좋다. 프로그래밍 요구사항에는 쓸데 없이 주석을 달지 말라고 했지만, 빨리 구현하는 것이 우선이다.
+
+- 리팩토링(`함수 길이 10`, `indent depth 2`, `공통 로직 분리` etc.)도 테스트 구현 모두 끝나고 시간 남으면 하자! 어차피 내부 함수 분리하면 `private`이기 때문에 테스트를 새로 작성 해줄 필요는 없다. 하지만 이 함수들을 의존하는 경우에는 수정이 필요할 수 있음. 테스트할 때 의존성 함수만 잘 고려해서 해주면 테스트 코드 작성해주면 된다.
+
+- 테스트 코드 구현할 때는 `단위 테스트`를 먼저 구현하고 그 다음에 `통합 테스트`를 구현하자. 그게 효율적이다. 만약 최종 코딩 테스트에서 `통합 테스트`가 주어지지 않는다면 `통합 테스트`를 먼저 구현하는 것이 맞다. 시간 없으면 기본적으로 주어진 `통합 테스트`만 테스트 하고 `단위 테스트`만 구현하자.
+
+- 테스트 구현할 때 `test.each()`를 처음부터 사용하지 말자. 우선 하나의 테스트 케이스만 해서 테스트 전체 로직을 구현한 후 여러 케이스를 추가하자. 만약 유효성 검증에 대한 테스트인 경우에는 `test.each()`로 바로 구현해도 좋다. `단위 테스트`만 이 규칙을 적용하고 `통합 테스트`는 `test.each()` 사용하지 말고 그냥 주어진 컨벤션 맞춰서 가도록 한다. 만약 시간 남으면 `test.each()`로 리팩토링 하자.
+
+## 사전에 대비할 것들
+
+- 미리 Node.js 버전 다 확인하기
+
+- 노션 서버 터질 수도 있으니 미리 창 다 켜놓고 소감문도 메모장에 미리 복붙해 놓을 것
+
+- 제출 가이드나 프로그래밍 요구사항 미리 숙지해두기
+
+- 춥고 긴장해서 손 시려울 수 있으니 핫팩 챙겨가기
+
+- 눈이나 비 올 것을 대비해서 우산 챙기기
+
+- 도착 시간 늦을 것 같으면 전날 미리 가 있기 (12월 초 지하철 파업 예정)
+
+- 만약 도중에 전화 올 수도 있으니 미리 방해금지 모드를 한 후 에어팟 착용하기
+
+- 전날에 배아플 만한 음식 먹지 않기
+
+- git push 할 때 브랜치 헷갈리지 말 것!
+
+## 코딩 테스트 볼 때 크롬에 띄울 창 정리
+
+- [내 레포지토리](https://github.com/sooyeoniya?tab=repositories)
+  - 지난 프리코스나 보일러 플레이트 참고할 경우 바로 찾아보기 위함
+
+- [우아한테크코스 지원 및 과제 제출 사이트](https://apply.techcourse.co.kr/)
+  - 빠른 제출을 위함
+
+- [파파고 번역기](https://papago.naver.com/)
+  - 함수나 변수명 지을 때 필요
+
+- [우아한테크코스 미션 유틸 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils/tree/main)
+  - 혹시 미션 유틸 관련 오류나 처음 써보는 것일 경우 레포 뜯어 보고 파라미터나 반환 값 타입 확인하기
+
+- [Jest API 리스트](https://jestjs.io/docs/api)
+  - 헷갈리는 macher 같은 것들 있으면 바로 검색하기 위함
+
+- [JavaScript MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript)
+  - 헷갈리는 JS 문법 검색을 위한 MDN 사이트
+
+- [정규 표현식 정리 블로그](https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EC%A0%95%EA%B7%9C%EC%8B%9D-RegExp-%EB%88%84%EA%B5%AC%EB%82%98-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%BD%EA%B2%8C-%EC%A0%95%EB%A6%AC)
+  - 만약 정규 표현식을 사용해야 하는 상황이 있으면 멘붕오지 말 것. 미리 준비 철저히 할 것.
+
+## Git 명령어 순서
+
+```
+// 원격 저장소 클론 및 VSC 열기
+cd IdeaProjects
+git clone {HTTPS_WEB_URL}
+code .
+
+npm install
+npm run test
+npm run start
+
+git add .
+git status
+git commit -m "feat/docs/fix/...: xxx"
+git push origin {branchName}
+
+// stage -> unstage
+git reset HEAD {filePath} 
+
+// 이전 커밋으로 돌리기 ('~1'은 바로 직전 커밋으로 돌린다는 의미)
+git reset HEAD~1 // unstaged 상태
+git reset --soft HEAD~1 // staged 상태
+git reset --hard HEAD~1  // 이전 커밋 변경 사항 모두 삭제
+
+// 이미 원격 저장소에 올라간 경우 강제 푸시
+git push -f origin {branchName}
+```
+
+## 전체 폴더 구조
+
+```
+__tests__
+├── ..
+├── ..
+├── ..
+├── ..
+└── ApplicationTest.js
+
+public
+├── ...md
+└── ...md
+
+src
+├── App.js
+├── index.js
+├── constants
+│   └── constants.js
+├── controllers
+│   └── Controller.js
+├── domains
+│   ├── ..
+│   └── ..
+├── services
+│   ├── ..
+│   └── ..
+├── utils
+│   ├── ..
+│   └── parser.js
+├── validations
+│   ├── validateXXX.js
+│   └── validateXXX.js
+└── view
+    ├── InputView.js
+    └── OutputView.js
+```
