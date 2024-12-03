@@ -1,12 +1,13 @@
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
 import validatedSomething from '../validations/validateSomething.js';
+import Domain from '../domains/Domain.js';
 
 class Controller {
-
   async start() {
     const something = await this.#getValidatedSomething();
-
+    const domain = new Domain(something);
+    OutputView.printParam(domain.getField());
   }
 
   /**

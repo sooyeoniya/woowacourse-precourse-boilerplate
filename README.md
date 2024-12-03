@@ -271,8 +271,6 @@ git push -f origin {branchName}
 __tests__
 ├── ..
 ├── ..
-├── ..
-├── ..
 └── ApplicationTest.js
 
 public
