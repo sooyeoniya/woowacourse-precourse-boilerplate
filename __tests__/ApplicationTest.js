@@ -3,10 +3,9 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import { EOL as LINE_SEPARATOR } from 'os';
 
 const mockQuestions = (inputs) => {
-  const messages = [];
+  MissionUtils.Console.readLineAsync = jest.fn();
 
-  MissionUtils.Console.readLineAsync = jest.fn((prompt) => {
-    messages.push(prompt);
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
     const input = inputs.shift();
 
     if (input === undefined) {
@@ -15,14 +14,6 @@ const mockQuestions = (inputs) => {
 
     return Promise.resolve(input);
   });
-
-  MissionUtils.Console.readLineAsync.messages = messages;
-};
-
-const mockNowDate = (date = null) => {
-  const mockDateTimes = jest.spyOn(MissionUtils.DateTimes, 'now');
-  mockDateTimes.mockReturnValue(new Date(date));
-  return mockDateTimes;
 };
 
 const getLogSpy = () => {
@@ -41,17 +32,36 @@ const expectLogContains = (received, expects) => {
   });
 };
 
-const expectLogContainsWithoutSpacesAndEquals = (received, expects) => {
-  const processedReceived = received.replace(/[\s=]/g, '');
+const expectLogContainsWithoutSpaces = (received, expects) => {
+  const processedReceived = received.replace(/\s/g, ''); // 공백 제거 (정규 표현식 추가 가능)
   expects.forEach((exp) => {
     expect(processedReceived).toContain(exp);
   });
 };
 
-const runExceptions = async ({
+// 에러 발생 시 종료되는 로직에 사용
+const runExceptions = async ({ inputs = [], expectedErrorMessage = [] }) => {
+  // given
+  const logSpy = getLogSpy();
+  mockQuestions([...inputs]);
+
+  // when
+  const app = new App();
+  await app.run();
+  
+  const output = getOutput(logSpy);
+
+  // then
+  expect(output).toHaveBeenCalledWith(
+    expect.stringContaining(expectedErrorMessage)
+  );
+};
+
+// 에러 발생 시 다시 입력 받는 로직에 사용
+const runExceptionsRetryVer = async ({
   inputs = [],
   inputsToTerminate = [],
-  expectedErrorMessage = '',
+  expected = [],
 }) => {
   // given
   const logSpy = getLogSpy();
@@ -61,13 +71,42 @@ const runExceptions = async ({
   const app = new App();
   await app.run();
 
+  const output = getOutput(logSpy);
+
   // then
-  expect(logSpy).toHaveBeenCalledWith(
-    expect.stringContaining(expectedErrorMessage)
-  );
+  expectLogContains(output, expected);
 };
 
-const run = async ({
+// 에러 없이 한 번에 실행되는 로직에 사용
+const run = async ({ 
+  inputs = [], 
+  expected = [],
+  expectedIgnoringWhiteSpaces = [],
+}) => {
+  // given
+  const logSpy = getLogSpy();
+  mockQuestions(inputs);
+
+  // when
+  const app = new App();
+  await app.run();
+
+  const output = getOutput(logSpy);
+
+  // then
+  if (expectedIgnoringWhiteSpaces.length > 0) {
+    expectLogContainsWithoutSpaces(
+      output,
+      expectedIgnoringWhiteSpaces
+    );
+  }
+  if (expected.length > 0) {
+    expectLogContains(output, expected);
+  }
+};
+
+// 에러 발생 시 다시 입력 받는 로직에 사용
+const runRetryVer = async ({
   inputs = [],
   inputsToTerminate = [],
   expected = [],
@@ -85,7 +124,7 @@ const run = async ({
 
   // then
   if (expectedIgnoringWhiteSpaces.length > 0) {
-    expectLogContainsWithoutSpacesAndEquals(
+    expectLogContainsWithoutSpaces(
       output,
       expectedIgnoringWhiteSpaces
     );
@@ -95,63 +134,78 @@ const run = async ({
   }
 };
 
-const INPUTS_TO_TERMINATE = ['[비타민워터-1]', 'N', 'N'];
-
-describe('편의점', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-    jest.restoreAllMocks();
-  });
-
-  test('파일에 있는 상품 목록 출력', async () => {
-    await run({
-      inputs: ['[콜라-1]', 'N', 'N'],
-      expected: [
-        /* prettier-ignore */
-        '- 콜라 1,000원 10개 탄산2+1',
-        '- 콜라 1,000원 10개',
-        '- 사이다 1,000원 8개 탄산2+1',
-        '- 사이다 1,000원 7개',
-        '- 오렌지주스 1,800원 9개 MD추천상품',
-        '- 오렌지주스 1,800원 재고 없음',
-        '- 탄산수 1,200원 5개 탄산2+1',
-        '- 탄산수 1,200원 재고 없음',
-        '- 물 500원 10개',
-        '- 비타민워터 1,500원 6개',
-        '- 감자칩 1,500원 5개 반짝할인',
-        '- 감자칩 1,500원 5개',
-        '- 초코바 1,200원 5개 MD추천상품',
-        '- 초코바 1,200원 5개',
-        '- 에너지바 2,000원 5개',
-        '- 정식도시락 6,400원 8개',
-        '- 컵라면 1,700원 1개 MD추천상품',
-        '- 컵라면 1,700원 10개',
-      ],
-    });
-  });
-
-  test('여러 개의 일반 상품 구매', async () => {
-    await run({
-      inputs: ['[비타민워터-3],[물-2],[정식도시락-2]', 'N', 'N'],
-      expectedIgnoringWhiteSpaces: ['내실돈18,300'],
-    });
-  });
-
-  test('기간에 해당하지 않는 프로모션 적용', async () => {
-    mockNowDate('2024-02-01');
-
-    await run({
-      inputs: ['[감자칩-2]', 'N', 'N'],
-      expectedIgnoringWhiteSpaces: ['내실돈3,000'],
-    });
-  });
-
-  test('예외 테스트', async () => {
+describe('통합 테스트', () => {
+  test('예외 테스트 (1)', async () => {
     await runExceptions({
-      inputs: ['[컵라면-12]', 'N', 'N'],
-      inputsToTerminate: INPUTS_TO_TERMINATE,
-      expectedErrorMessage:
-        '[ERROR] 재고 수량을 초과하여 구매할 수 없습니다. 다시 입력해 주세요.',
+      inputs: ['~~'],
+      expected: ['[ERROR]'],
+    });
+  });
+
+  test('예외 테스트 (2)', async () => {
+    await runExceptionsRetryVer({
+      inputs: ['~~'],
+      inputsToTerminate: ['!!'],
+      expected: ['[ERROR]'],
+    });
+  });
+
+  test.each([
+    [
+      ['inputString 1'],
+      [
+        'aa',
+        'bb',
+        'cc',
+        'dd',
+        'ee',
+      ]
+    ],
+    [
+      ['inputString 2'],
+      [
+        'aa',
+        'bb',
+        'cc',
+        'dd',
+        'ee',
+      ]
+    ],
+  ])('기능 테스트 (1)', async (inputs, expected) => {
+    await run({
+      inputs: inputs,
+      expected: expected,
+    });
+  });
+
+  test.each([
+    [
+      ['inputString 1'],
+      ['inputString retry 1'],
+      [
+        'aa',
+        'bb',
+        'cc',
+        'dd',
+        'ee',
+      ]
+    ],
+    [
+      ['inputString 2'],
+      ['inputString retry 2'],
+      [
+        'aa',
+        'bb',
+        'cc',
+        'dd',
+        'ee',
+      ]
+    ],
+  ])('기능 테스트 (2)', async (inputs, inputsToTerminate, expected) => {
+    await runRetryVer({
+      inputs: inputs,
+      inputsToTerminate: inputsToTerminate,
+      expected: expected,
     });
   });
 });
