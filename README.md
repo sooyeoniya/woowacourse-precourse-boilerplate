@@ -1,6 +1,6 @@
-# 🏛️ woowacourse-precourse-boilerplate
+# 🍀 woowacourse-precourse-boilerplate
 
-## Node.js Version (My Local)
+## ✔️ Node.js Version (My Local)
 
 ✔️ **nvm**: `0.40.0`
 
@@ -8,21 +8,21 @@
 
 ✔️ **node**: `20.18.0`
 
-## Woowacourse Apply Platform
+## ✔️ Woowacourse Apply Platform
 
 - [우아한테크코스 지원 및 과제 제출 사이트](https://apply.techcourse.co.kr/)
 
-## Precourse Submission Guide
+## ✔️ Precourse Submission Guide
 
 - [프리코스 과제 가이드](https://github.com/woowacourse/woowacourse-docs/tree/main/precourse)
 
 - [비공개 저장소 제출 가이드](https://docs.google.com/document/d/1cmg0VpPkuvdaetxwp4hnyyFC_G-1f2Gr8nIDYIWcKC8/edit?tab=t.0#heading=h.1x8npe961lrb)
 
-## JavaScript Mission Utils Library
+## ✔️ JavaScript Mission Utils Library
 
 - [javascript-mission-utils](https://github.com/woowacourse-projects/javascript-mission-utils/tree/main)
 
-## JavaScript Style Guide
+## ✔️ JavaScript Style Guide
 
 - [woowacourse-style-guide](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javascript)
 
@@ -30,11 +30,11 @@
 
 - [airbnb-javascript-style-guide-kr-ver.](https://github.com/tipjs/javascript-style-guide)
 
-## Commit Message Conventions
+## ✔️ Commit Message Conventions
 
 - [angularJS-git-commit-message-conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
 
-## 진행 방식
+## ✔️ 진행 방식
 
 - 미션은 `과제 진행 요구 사항`, `기능 요구 사항`, `프로그래밍 요구 사항` 세 가지로 구성되어 있다.
 
@@ -46,7 +46,7 @@
 - 비공개 저장소인 경우, 정해진 시간 내에 우아한테크코스 계정을 협력자로 초대하지 않으면 제출하지 않은 것으로 간주한다.
 - 종료 일시 이후에는 추가 푸시를 허용하지 않는다.
 
-## 미션 제출 방법
+## ✔️ 미션 제출 방법
 
 - 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
 
@@ -58,7 +58,7 @@
 
   - 과제를 수행하면서 느낀 점, 배운 점, 많은 시간을 투자한 부분 등 자유롭게 작성한다.
 
-## 과제 제출 전 체크 리스트
+## ✔️ 과제 제출 전 체크 리스트
 
 - 기능을 올바르게 구현했더라도 **요구 사항에 명시된 출력 형식을 따르지 않으면 0점**을 받게 된다.
 
@@ -66,7 +66,7 @@
 
 - **테스트가 실패하면 점수가 0점**이 되므로 제출하기 전에 반드시 확인한다.
 
-## 테스트 실행 가이드
+## ✔️ 테스트 실행 가이드
 
 - 터미널에서 `node --version`을 실행하여 `Node.js` 버전이 `20.17.0` 이상인지 확인한다.
 
@@ -78,7 +78,7 @@ npm run test
 npm run start
 ```
 
-## 과제 진행 요구 사항
+## ✔️ 과제 진행 요구 사항
 
 - 미션은 주어진 미션 저장소를 생성하는 것으로 시작한다.
 
@@ -89,7 +89,7 @@ npm run start
 
 - 자세한 과제 진행 방법은 프리코스 진행 가이드 문서를 참고한다.
 
-## 프로그래밍 요구 사항 1
+## ✔️ 프로그래밍 요구 사항 1
 
 - `Node.js` `20.17.0` 버전에서 실행 가능해야 한다.
 
@@ -104,7 +104,7 @@ npm run start
 - 자바스크립트 코드 컨벤션을 지키면서 프로그래밍한다.
   - 기본적으로 `JavaScript Style Guide`를 원칙으로 한다.
 
-## 프로그래밍 요구 사항 2
+## ✔️ 프로그래밍 요구 사항 2
 
 - `indent(인덴트, 들여쓰기) depth`를 `3`이 넘지 않도록 구현한다. `2`까지만 허용한다.
 
@@ -123,7 +123,7 @@ npm run start
     - [Testing Asynchronous Code](https://jestjs.io/docs/asynchronous)
     - [Jest로 파라미터화 테스트하기: test.each(), describe.each()](https://www.daleseo.com/jest-each)
 
-## 프로그래밍 요구 사항 3
+## ✔️ 프로그래밍 요구 사항 3
 
 - `else`를 지양한다.
 
@@ -133,7 +133,7 @@ npm run start
 
 - 구현한 기능에 대한 `단위 테스트를 작성`한다. 단, UI 로직은 제외한다.
 
-## 프로그래밍 요구 사항 4
+## ✔️ 프로그래밍 요구 사항 4
 
 - 함수(또는 메서드)의 길이가 10라인을 넘어가지 않도록 구현한다.
   - 함수(또는 메서드)가 한 가지 일만 잘 하도록 구현한다.
@@ -164,7 +164,7 @@ npm run start
     }
   ```
 
-## 라이브러리
+## 📖 라이브러리
 
 - `@woowacourse/mission-utils`에서 제공하는 `Console`, `Random`, `DateTimes`, `shuffle` API를 사용하여 구현해야 한다.
 
@@ -178,7 +178,7 @@ npm run start
 
   - 특정 숫자 배열의 순서를 임의로 섞으려면 `Random.shuffle(numArray)`를 활용한다.
 
-## 구현 시간 줄이는 나만의 Tip!
+## 🤩 구현 시간 줄이는 나만의 Tip!
 
 - `constants.js` 파일은 만들지 말자. 테스트까지 구현 모두 끝나고 시간 남으면 상수화하기!
 
@@ -192,7 +192,7 @@ npm run start
 
 - 테스트 구현할 때 `test.each()`를 처음부터 사용하지 말자. 우선 하나의 테스트 케이스만 해서 테스트 전체 로직을 구현한 후 여러 케이스를 추가하자. 만약 유효성 검증에 대한 테스트인 경우에는 `test.each()`로 바로 구현해도 좋다. `단위 테스트`만 이 규칙을 적용하고 `통합 테스트`는 `test.each()` 사용하지 말고 그냥 주어진 컨벤션 맞춰서 가도록 한다. 만약 시간 남으면 `test.each()`로 리팩토링 하자.
 
-## 사전에 대비할 것들
+## 🤔 사전에 대비할 것들
 
 - 미리 Node.js 버전 다 확인하기
 
@@ -212,7 +212,7 @@ npm run start
 
 - git push 할 때 브랜치 헷갈리지 말 것!
 
-## 코딩 테스트 볼 때 크롬에 띄울 창 정리
+## 📋 코딩 테스트 볼 때 크롬에 띄울 창 정리
 
 - [내 레포지토리](https://github.com/sooyeoniya?tab=repositories)
   - 지난 프리코스나 보일러 플레이트 참고할 경우 바로 찾아보기 위함
@@ -235,7 +235,7 @@ npm run start
 - [정규 표현식 정리 블로그](https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EC%A0%95%EA%B7%9C%EC%8B%9D-RegExp-%EB%88%84%EA%B5%AC%EB%82%98-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%BD%EA%B2%8C-%EC%A0%95%EB%A6%AC)
   - 만약 정규 표현식을 사용해야 하는 상황이 있으면 멘붕오지 말 것. 미리 준비 철저히 할 것.
 
-## Git 명령어 순서
+## 🙋🏻 Git 명령어 순서
 
 ```
 // 원격 저장소 클론 및 VSC 열기
@@ -265,7 +265,7 @@ git reset --hard HEAD~1  // 이전 커밋 변경 사항 모두 삭제
 git push -f origin {branchName}
 ```
 
-## 전체 폴더 구조
+## 🏛️ 전체 폴더 구조
 
 ```
 __tests__
@@ -300,3 +300,34 @@ src
     ├── InputView.js
     └── OutputView.js
 ```
+
+## 🤯 정규 표현식 정리
+
+
+## 👩🏻‍🏫 헷갈리는 자바스크립트 문법 정리
+
+filter
+
+map
+
+reduce
+
+includes
+
+some
+
+trim
+
+slice
+
+floor ceil
+
+indexOf, lastIndexOf
+
+isInteger, Number.isNaN, isNaN
+
+조인해서 쓰는 법
+
+Array, String, Map, Set 별 문법 정리
+
+Array, String, Map, Set 전환하는 방법
