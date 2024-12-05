@@ -47,14 +47,9 @@ const runExceptions = async ({ inputs = [], expectedErrorMessage = [] }) => {
 
   // when
   const app = new App();
-  await app.run();
   
-  const output = getOutput(logSpy);
-
   // then
-  expect(output).toHaveBeenCalledWith(
-    expect.stringContaining(expectedErrorMessage)
-  );
+  await expect(app.run()).rejects.toThrow(expectedErrorMessage);
 };
 
 // 에러 발생 시 다시 입력 받는 로직에 사용
