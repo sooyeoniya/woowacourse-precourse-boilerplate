@@ -266,16 +266,15 @@ git push -f origin {branchName}
 ```
 
 ## 🏛️ 전체 폴더 구조
-<!-- TODO: 보일러 플레이트 구현 완료 후 폴더 구조 수정 -->
-
 ```
 __tests__
-├── ..
+├── // Domain 로직 구현 후 DomainTest.js 추가
+├── // Service 로직 구현 후 ServiceTest.js 추가
 └── ApplicationTest.js
 
 public
-├── ...md
-└── ...md
+├── example-data-1.md
+└── example-data-2.md
 
 src
 ├── App.js
@@ -300,10 +299,6 @@ src
     └── OutputView.js
 ```
 
-## 📘 테스트 코드 헷갈리는 Matcher 정리
-
-- 
-
 ## 📙 Set, Array, String 변환 방법
 
 ### Set을 통해 delimiter라는 변수 정의
@@ -326,6 +321,14 @@ src
 ### split('')을 사용하여 String을 Array로 변환
 `Array.from(delimiter).join('').split('');`
 <br/> **> output :** `[’,’, ‘:’]`
+
+## 📘 테스트 코드 정리
+
+- [Global Methods](https://jestjs.io/docs/api#methods)
+
+- [Expect Matchers](https://jestjs.io/docs/expect#reference)
+
+- [Mock Methods](https://jestjs.io/docs/mock-function-api#methods)
 
 ## 📗 정규 표현식 정리
 
