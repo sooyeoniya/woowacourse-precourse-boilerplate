@@ -285,17 +285,16 @@ src
 ├── controllers
 │   └── Controller.js
 ├── domains
-│   ├── ..
-│   └── ..
+│   └── Domain.js
 ├── services
-│   ├── ..
-│   └── ..
+│   └── Service.js
 ├── utils
-│   ├── ..
-│   └── parser.js
+│   ├── deepFreeze.js
+│   ├── parser.js
+│   ├── readFileData.js
+│   └── testUtils.js
 ├── validations
-│   ├── ..
-│   └── validateXXX.js
+│   └── validateSomething.js
 └── view
     ├── InputView.js
     └── OutputView.js
