@@ -42,7 +42,6 @@ const expectLogContainsWithoutSpaces = (received, expects) => {
 // 에러 발생 시 종료되는 로직에 사용
 const runExceptions = async ({ inputs = [], expectedErrorMessage = [] }) => {
   // given
-  const logSpy = getLogSpy();
   mockQuestions([...inputs]);
 
   // when
