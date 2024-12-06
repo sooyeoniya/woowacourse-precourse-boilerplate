@@ -1,13 +1,16 @@
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
-import validatedSomething from '../validations/validateSomething.js';
+import validateSomething from '../validations/validateSomething.js';
 import Domain from '../domains/Domain.js';
+import Service from '../services/Service.js';
 
 class Controller {
   async start() {
     const something = await this.#getValidatedSomething();
     const domain = new Domain(something);
+    const service = new Service(domain);
     OutputView.printParam(domain.getField());
+    OutputView.printParam(service.getServiceInfo());
   }
 
   /**
@@ -18,7 +21,7 @@ class Controller {
     try {
       const something = await InputView.read();
       // 입력 값에 대한 파싱이 필요한 경우: const parsedSomething = parser.xxx(something);
-      validatedSomething(something);
+      validateSomething(something);
       return something;
     } catch (error) {
       OutputView.printErrorMessage(error.message);
