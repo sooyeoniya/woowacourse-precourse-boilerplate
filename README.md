@@ -271,7 +271,6 @@ git push -f origin {branchName}
 ```
 __tests__
 ├── ..
-├── ..
 └── ApplicationTest.js
 
 public
@@ -295,7 +294,7 @@ src
 │   ├── ..
 │   └── parser.js
 ├── validations
-│   ├── validateXXX.js
+│   ├── ..
 │   └── validateXXX.js
 └── view
     ├── InputView.js
@@ -304,44 +303,40 @@ src
 
 ## 📘 테스트 코드 헷갈리는 Matcher 정리
 
+- 
 
-## 📙 헷갈리는 자바스크립트 문법 정리
+## 📙 Set, Array, String 변환 방법
 
-filter
+### Set을 통해 delimiter라는 변수 정의
+`const delimiter = new Set([',', ':']);`
 
-map
+### Array.from() 또는 스프레드 문법을 사용해 Set을 Array로 변환
+`Array.from(delimiter);`
+<br/> `[...delimiter]`
+<br/> **> output :** `[’,’, ‘:’]`
 
-reduce
+### join('')을 사용하여 Array을 String으로 변환
+`Array.from(delimiter).join('');`
+<br/> **> output :** `‘,:’`
 
-includes
+### for…of 문을 통해 String 순회 가능
+`const str = Array.from(delimiter).join('');`
+<br/> `for (const s of str) console.log(s);`
+<br/> **> output :** `,` `:`
 
-some
-
-trim
-
-slice
-
-repeat
-
-join
-
-floor ceil
-
-indexOf, lastIndexOf
-
-isInteger, Number.isNaN, isNaN
-
-조인해서 쓰는 법
-
-Array, String, Map, Set 별 문법 정리
-
-Array, String, Map, Set 전환하는 방법
+### split('')을 사용하여 String을 Array로 변환
+`Array.from(delimiter).join('').split('');`
+<br/> **> output :** `[’,’, ‘:’]`
 
 ## 📗 정규 표현식 정리
 
 - [정규 표현식 정리 블로그](https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EC%A0%95%EA%B7%9C%EC%8B%9D-RegExp-%EB%88%84%EA%B5%AC%EB%82%98-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%BD%EA%B2%8C-%EC%A0%95%EB%A6%AC)
 
 - [정규 표현식 테스트](https://regexr.com/)
+
+- [MDN - 정규 표현식](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_expressions)
+
+- [MDN - RegExp() constructor](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)
 
 - [RegExp.prototype.test()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
 
