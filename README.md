@@ -266,6 +266,7 @@ git push -f origin {branchName}
 ```
 
 ## 🏛️ 전체 폴더 구조
+<!-- TODO: 보일러 플레이트 구현 완료 후 폴더 구조 수정 -->
 
 ```
 __tests__
@@ -301,10 +302,10 @@ src
     └── OutputView.js
 ```
 
-## 🤯 정규 표현식 정리
+## 📘 테스트 코드 헷갈리는 Matcher 정리
 
 
-## 👩🏻‍🏫 헷갈리는 자바스크립트 문법 정리
+## 📙 헷갈리는 자바스크립트 문법 정리
 
 filter
 
@@ -320,6 +321,10 @@ trim
 
 slice
 
+repeat
+
+join
+
 floor ceil
 
 indexOf, lastIndexOf
@@ -331,3 +336,19 @@ isInteger, Number.isNaN, isNaN
 Array, String, Map, Set 별 문법 정리
 
 Array, String, Map, Set 전환하는 방법
+
+## 📗 정규 표현식 정리
+
+- [정규 표현식 정리 블로그](https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EC%A0%95%EA%B7%9C%EC%8B%9D-RegExp-%EB%88%84%EA%B5%AC%EB%82%98-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%BD%EA%B2%8C-%EC%A0%95%EB%A6%AC)
+
+- [정규 표현식 테스트](https://regexr.com/)
+
+- [RegExp.prototype.test()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
+
+- [String.prototype.match()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/match)
+
+- [String.prototype.matchAll()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll)
+
+- [String.prototype.replace()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+
+- [String.prototype.search()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/search)
