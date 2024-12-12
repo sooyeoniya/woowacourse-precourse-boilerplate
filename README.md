@@ -218,6 +218,8 @@ npm run start
 
 - 안구 건조할 수도 있기 때문에 인공눈물 옆에 두기
 
+- 계산이 필요한 경우를 대비하여 종이 한 장과 볼펜 두 개 챙기기
+
 ## 📋 코딩 테스트 볼 때 크롬에 띄울 창 정리
 
 - [내 레포지토리](https://github.com/sooyeoniya?tab=repositories)
